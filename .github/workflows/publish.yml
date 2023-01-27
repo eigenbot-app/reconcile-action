@@ -26,18 +26,18 @@ jobs:
         with:
           repo: eigenbot-app/reconciler
           version: tags/${{env.VERSION}}
-          file: ebx-linux-amd64
+          file: ebr-linux-amd64
           token: ${{ steps.token.outputs.token }}
 
       - uses: dsaltares/fetch-gh-release-asset@3942ce82f1192754cd487a86f03eef6eeb89b5da
         with:
           repo: eigenbot-app/reconciler
           version: tags/${{env.VERSION}}
-          file: ebx-linux-arm64
+          file: ebr-linux-arm64
           token: ${{ steps.token.outputs.token }}
 
       - uses: AButler/upload-release-assets@c94805dc72e4b20745f543da0f62eaee7722df7a
         with:
-          files: 'ebx-*'
+          files: 'ebr-*'
           repo-token: ${{ steps.token.outputs.token }}
           release-tag: ${{env.VERSION}}
