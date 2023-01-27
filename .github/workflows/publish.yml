@@ -1,0 +1,43 @@
+name: Publish
+on:
+  release:
+    types:
+      - published
+env:
+  APP_ID: 284028
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tibdex/github-app-token@v1
+        id: token
+        with:
+          app_id: ${{env.APP_ID}}
+          private_key: ${{ secrets.RELEASE_BOT_PRIVATE_KEY }}
+          repository: ${{ github.repository }}
+          permissions: >-
+            {"contents": "write"}
+
+      - name: Set VERSION from tag
+        run: |
+          echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - uses: dsaltares/fetch-gh-release-asset@3942ce82f1192754cd487a86f03eef6eeb89b5da
+        with:
+          repo: eigenbot-app/reconciler
+          version: tags/${{env.VERSION}}
+          file: ebx-linux-amd64
+          token: ${{ steps.token.outputs.token }}
+
+      - uses: dsaltares/fetch-gh-release-asset@3942ce82f1192754cd487a86f03eef6eeb89b5da
+        with:
+          repo: eigenbot-app/reconciler
+          version: tags/${{env.VERSION}}
+          file: ebx-linux-arm64
+          token: ${{ steps.token.outputs.token }}
+
+      - uses: AButler/upload-release-assets@c94805dc72e4b20745f543da0f62eaee7722df7a
+        with:
+          files: 'ebx-*'
+          repo-token: ${{ steps.token.outputs.token }}
+          release-tag: ${{env.VERSION}}

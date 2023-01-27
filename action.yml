@@ -1,0 +1,15 @@
+name: Reconcile Action for Eigenbot
+description: TODO
+branding:
+  icon: check-square
+  color: green
+inputs:
+  secret:
+    description: Eigenbot Account Secret
+    required: true
+  token:
+    description: GitHub Access Token
+    required: true
+runs:
+  using: node16
+  main: ./dist/main.js
