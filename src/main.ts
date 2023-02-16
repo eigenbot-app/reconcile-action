@@ -21,9 +21,6 @@ async function runReconcile(): Promise<null | Error> {
   }
 
   const token = core.getInput("token");
-  if (token === "") {
-    return Error("input `token` was not provided");
-  }
 
   return null;
 }
