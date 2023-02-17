@@ -15,12 +15,12 @@ async function run(): Promise<void> {
 }
 
 async function runReconcile(): Promise<null | Error> {
-  const secret = core.getInput("secret");
+  const secret = core.getInput("access-key");
   if (secret === "") {
-    return Error("input `secret` was not provided");
+    return Error("input `access-key` was not provided");
   }
 
-  const token = core.getInput("token");
+  const token = core.getInput("github-token");
 
   return null;
 }

@@ -4,10 +4,10 @@ branding:
   icon: check-square
   color: green
 inputs:
-  secret:
+  access-key:
     description: Eigenbot Account Secret
     required: true
-  token:
+  github-token:
     description: GitHub Access Token
     required: true
 runs:
