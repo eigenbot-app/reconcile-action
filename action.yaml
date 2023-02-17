@@ -10,6 +10,10 @@ inputs:
   github-token:
     description: GitHub Access Token
     required: true
+  repo:
+    description: TODO
+  manifest-id:
+    description: TODO
 runs:
   using: node16
   main: ./dist/main.js
