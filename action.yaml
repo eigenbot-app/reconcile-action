@@ -29,3 +29,4 @@ runs:
       shell: bash
       env:
         VERSION: ${{ inputs.version }}
+        GH_TOKEN: ${{ inputs.github-token }}
