@@ -25,7 +25,7 @@ runs:
           -access-key "${{ inputs.access-key }}" \
           -github-token "${{ inputs.github-token }}" \
           -repo "${{ inputs.repo }}" \
-          -manifest-id "${{ inputs.manifest-id }}" \
+          -manifest-id "${{ inputs.manifest-id }}"
       shell: bash
       env:
         VERSION: ${{ inputs.version }}

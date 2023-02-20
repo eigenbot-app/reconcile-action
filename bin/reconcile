@@ -19,7 +19,7 @@ sudo mv ./eigenbot-reconcile-linux-amd64 /usr/bin/reconcile
 
 if command -v reconcile &>/dev/null; then
   version=$(reconcile -version)
-  echo "::notice::Installed Eigenbot Reconciler version \`${version}\` ($(which reconcile))."
+  echo "Installed Eigenbot Reconciler version \`${version}\` ($(which reconcile))."
 else
   echo "::error::Failed to install Eigenbot Reconciler version \`${version}\`."
   exit 1
