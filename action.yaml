@@ -4,6 +4,9 @@ branding:
   icon: check-square
   color: green
 inputs:
+  version:
+    description: TODO
+    default: latest
   access-key:
     description: Eigenbot Account Secret
     required: true
@@ -15,5 +18,14 @@ inputs:
   manifest-id:
     description: TODO
 runs:
-  using: node16
-  main: ./dist/main.js
+  using: composite
+  steps:
+    - run: |
+        ${{ github.action_path }}/bin/reconcile \
+          -access-key "${{ inputs.access-key }}" \
+          -github-token "${{ inputs.github-token }}" \
+          -repo "${{ inputs.repo }}" \
+          -manifest-id "${{ inputs.manifest-id }}" \
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
