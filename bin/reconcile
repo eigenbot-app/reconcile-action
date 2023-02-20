@@ -4,11 +4,11 @@ set -e
 VERSION=${VERSION:-"latest"}
 
 if ! command -v gh &>/dev/null; then
-  echo "::error::GitHub CLI \`gh\` could not be found in PATH."
+  echo "::error::Expected GitHub CLI \`gh\` in PATH."
   exit 1
 fi
 
-echo "Downloading version \`${VERSION}\`..."
+echo "Downloading Eigenbot Reconciler version \`${VERSION}\`..."
 gh release download \
   --repo eigenbot-app/reconcile-action \
   --pattern "eigenbot-reconcile-linux-amd64" \
@@ -19,9 +19,9 @@ sudo mv ./eigenbot-reconcile-linux-amd64 /usr/bin/reconcile
 
 if command -v reconcile &>/dev/null; then
   version=$(reconcile -version)
-  echo "::notice::Installed version \`${version}\` ($(which reconcile))."
+  echo "::notice::Installed Eigenbot Reconciler version \`${version}\` ($(which reconcile))."
 else
-  echo "::error::Failed to install version \`${version}\`."
+  echo "::error::Failed to install Eigenbot Reconciler version \`${version}\`."
   exit 1
 fi
 
