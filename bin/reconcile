@@ -14,6 +14,7 @@ gh release download \
   --pattern "eigenbot-reconcile-linux-amd64" \
   --dir .
 
+chmod +x ./eigenbot-reconcile-linux-amd64
 sudo mv ./eigenbot-reconcile-linux-amd64 /usr/bin/reconcile
 
 if command -v reconcile &>/dev/null; then
